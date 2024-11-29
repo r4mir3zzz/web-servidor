@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Sevillana&display=swap');
+
+
+:root{
+    --color: #6e8efb;
+    --font: "Merriweather", serif;
+}
+
+.main__contact {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100vh;
+    background-color: #f5f5f5; 
+}
+
+.main__contact > .section__social, 
+.main__contact > .section__contact {
+    flex: 1;
+    padding: 40px; 
+}
+
+.section__social, .section__contact {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.section__social .title_contact, .section__contact .title_contact {
+    font-size: 3rem;
+    font-family: var(--font);
+    color: #333;
+    margin-bottom: 16px;
+}
+
+/* Estilos para la parte informativa*/
+
+.section__social .text__contact {
+    font-size: 1.5rem;
+    font-family: var(--font);
+    color: #555;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.section__social .list__contact {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 10px;
+}
+
+.section__social .list__contact  li {
+    font-size: 22px;
+    color: var(--color);
+    margin: 8px 0;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+/* Estilos para la parte del formulario*/
+
+.section__contact .form__contact{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.section__contact input[type="text"], 
+.section__contact input[type="email"], 
+.section__contact textarea {
+    width: 100%;
+    max-width: 430px;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid var(--color);
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 16px;
+    font-family: var(--font);
+    color: #333;
+}
+
+.section__contact .btnContact {
+    width: 100%;
+    max-width: 400px;
+    padding: 10px;
+    font-size: 16px;
+    font-family: var(--font);
+    color: #fff;
+    background-color: var(--color);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.section__contact .btnContact:hover {
+    background-color: #005bb5;
+}

@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Sevillana&display=swap');
+
+:root{
+    --font: "Merriweather", serif;
+}
+
+.main-medicine {
+    margin-top: 10%;
+   
+}
+.container{
+    background-color: rgba(184, 184, 184, 0.247);
+    width: 50%;
+    height: 100%;
+    margin-left: 25%;
+    border-radius: 25px;
+    padding: 1%;
+}
+.tileForm{
+    color: rgb(0, 0, 0);
+    font-family: var(--font);
+    font-size: 25px;
+    text-align: center;
+    margin-bottom: 5%;
+    padding: 0;
+    
+}
+.tileForm p{
+    font-size: 15px;
+    font-weight: lighter;
+}
+
+form h2{
+    font-family: var(--font);
+    font-weight: lighter;
+    font-size: 15px;
+    margin-left: 25%;
+}
+/*inputs*/
+.input-nombre, .input-descripcion,.input-precio,.input-cantidad{
+    width: 50%;
+    padding: 8px;
+    margin-left: 25%;
+    margin-top: 1%;
+    border-radius: 4px;
+    border: 1px solid rgba(0, 0, 0, 0.137);
+}
+
+.botonEnviar{
+    margin-left: 45%;
+    margin-top: 5%;
+    background-color: #4CAF50; 
+    color: white;              
+    padding: 10px 20px;        
+    border: none;              
+    border-radius: 5px;        
+    cursor: pointer;           
+    font-size: 16px;          
+    transition: transform 0.3s, background-color 0.3s; 
+}
+.botonEnviar:hover{
+    background-color: #45a049; 
+    transform: scale(1.1); 
+}

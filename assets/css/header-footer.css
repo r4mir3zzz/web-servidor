@@ -1,0 +1,181 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Sevillana&display=swap');
+
+:root{
+    --background-color: #ebeff0;
+    --font: "Merriweather", serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; 
+}
+
+body {
+    position: relative; 
+}
+
+header {
+    background-color: var(--background-color);
+    position: absolute; 
+    width: 100%; 
+    z-index: 10;
+    top: 0;
+    padding: 20px 0; 
+    box-shadow: 0px 4px 8px 0px rgba(1, 27, 48, 0.521);
+    position: fixed;
+}
+
+.header-nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 3px;
+    gap: 40%;
+}
+
+.logo {
+    width: 10%;
+    height: 10%;
+}
+
+.logo-header {
+    width: 100%;
+    height: 100%;
+}
+
+.header-list {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 80px;
+    font-size: 1.1rem;
+    list-style: none;
+}
+
+.header-list a {
+    text-decoration: none;
+    color: black;
+    font-family: var(--font);
+}
+
+.header-list a:hover {
+    color: rgb(168, 167, 167);
+}
+
+/* Menú desplegable */
+.dropdown {
+    position: relative;
+    color: black;
+    font-family: var(--font);
+    cursor: pointer;
+    padding: 8px;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    min-width: 150px;
+    top: 100%; /* Colocar debajo del menú principal */
+    left: 0;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    z-index: 1;
+    opacity: 0; /* Inicio de la animación con opacidad 0 */
+    transition: opacity 0.6s ease; /* Ajuste de la velocidad de la animación */
+}
+.dropdown:hover .dropdown-content {
+    display: block;
+    opacity: 1; /* Fin de la animación con opacidad 1 */
+}
+
+/* Estilo de enlaces en el menú desplegable */
+.dropdown-content a {
+    color: black;
+    padding: 10px 15px;
+    text-decoration: none;
+    display: block;
+    font-family: var(--font);
+    transition: background-color 0.3s;
+}
+
+.dropdown-content a:hover {
+    background-color: #f2f2f2;
+}
+
+/*   sub menus */
+.navbar .dropdown-content {
+    display: none; 
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 200px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+/* el estilo  de los submenus */
+.submenu {
+    position: relative;
+}
+
+/* los sub menus tienen estar ocultos hasta que el menu se abra */
+.sub-submenu {
+    display: none;
+    position: absolute;
+    left: 100%;
+    top: 0;
+    background-color: #f1f1f1;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* enseñar el dropdown  mause esta  en  el contenedor */
+.navbar:hover .dropdown-content {
+    display: block;
+}
+
+/* mostrar los sub menus cuando el mouse esta en  el submenu */
+.submenu:hover .sub-submenu {
+    display: block;
+}
+
+
+/*estilos del footer*/
+.beforefooter{
+    background-color: #ecebeb;
+    height: 100px;
+}
+
+
+
+
+.footerDiv{
+    background-color:  #074e72b2;
+    color: #ecebeb;
+    font-size: 16px;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    font-family: arial;
+}
+.footerDiv footer p{
+    text-align: center;
+}
+.linkFooter{
+    margin-top: 8%;
+    background-color: #074e723f ;
+    height: 50px;
+    
+}
+.linkFooter a{
+    color: #ecebeb;
+    text-decoration: none;
+    padding: 10px  100px ;
+    font-size: 18px;
+    font-family: arial;
+}
+.linkFooter a:hover{
+    color: rgb(175, 172, 172);
+    border-radius: 10px;
+}
+
