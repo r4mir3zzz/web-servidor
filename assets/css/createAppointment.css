@@ -4,37 +4,30 @@
     --font: "Merriweather", serif;
 }
 
-
 .main__emergency{
     padding: 10%;
 }
 
 .main__appointment{
     margin-top: 10%;
+   
 }
-
 .container{
-    background-image: url(../../assets/img/background.jpg);
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-color: rgba(184, 184, 184, 0.247); /* Color de fondo semitransparente */
+    background-color: rgba(184, 184, 184, 0.247);
     width: 50%;
+    height: 1000px;
     margin-left: 25%;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    padding: 30px;
-    text-align: center;
+    border-radius: 25px;
 }
-
-
 .tileForm{
-    color: #555;
+    color: rgb(0, 0, 0);
     font-family: var(--font);
     font-size: 25px;
-    margin-bottom: 20px;
+    text-align: center;
+    margin-bottom: 5%;
+    padding: 0;
+    
 }
-
 .tileForm p{
     font-size: 15px;
     font-weight: lighter;
@@ -45,66 +38,80 @@ form h2{
     font-family: var(--font);
     font-weight: lighter;
     font-size: 15px;
-    margin-top: 10px;
+    margin-left: 25%;
 }
-
-
-.label{
-    font-size: 14px;
-    display: block;
-    margin-top: 15px;
-    color: #666;
-    font-family: var(--font);
-}
-
-
-.input-nombre, .input-gender, .input-email, .input-date, .input-direccion, .input-comentsAdic{
-    width: 100%;
-    padding: 10px;
-    margin-top: 8px;
-    border: 1px solid #ccc;
+/*inputs*/
+.input-nombre, .input-gender,.input-email{
+    width: 50%;
+    padding: 8px;
+    margin-left: 25%;
+    margin-top: 1%;
     border-radius: 4px;
-    font-family: var(--font);
-    outline: none;
+    border: 1px solid rgba(0, 0, 0, 0.137);
 }
 
 .input-date{
     color: grey;
-}
-
-
-.input-comentsAdic{
-    padding: 50px;
-}
-
-
-.botonEnviar{
-    width: 100%;
-    padding: 10px;
-    background-color: #6e8efb;
-    border: none;
+    width: 50%;
+    padding: 8px;
+    margin-left: 25%;
+    margin-top: 1%;
     border-radius: 4px;
-    color: white;
-    font-size: 16px;
+    border: 1px solid rgba(0, 0, 0, 0.137);
     font-family: var(--font);
-    margin-top: 20px;
-    cursor: pointer;
-    transition: background 0.3s ease;
 }
-
-.botonEnviar:hover{
-    background-color: #45a049;
-    transform: scale(1.1);
+.input-direccion{
+    width: 50%;
+    padding: 10px;
+    margin-left: 25%;
+    margin-top: 1%;
+    border-radius: 4px;
+    border: 1px solid rgba(0, 0, 0, 0.137);
 }
-
-
-.direccion, .email{
+.input-comentsAdic{
+    width: 50%;
+    padding: 50px;
+    margin-left: 25%;
+    margin-top: 1%;
+    border-radius: 4px;
+    border: 1px solid rgba(0, 0, 0, 0.137);
+}
+.direccion{
+    margin-top: 7%;
+}
+.direccion p{
+    margin-left: 25%;
     font-family: var(--font);
+    font-weight: lighter;
     font-size: 12px;
     margin-top: 1%;
     color: rgba(63, 62, 62, 0.945);
 }
 
-.direccion p, .email p{
+.email p{
     margin-left: 25%;
+    font-family: var(--font);
+    font-weight: lighter;
+    font-size: 12px;
+    margin-top: 1%;
+    color: rgba(63, 62, 62, 0.945);
+}
+.fechaNacimiento,.generoPaciente,.email,.telefono,.comentsAdicionales{
+    margin-top: 2%;
+}
+.botonEnviar{
+    margin-left: 45%;
+    margin-top: 5%;
+    background-color: #4CAF50; 
+    color: white;              
+    padding: 10px 20px;        
+    border: none;              
+    border-radius: 5px;        
+    cursor: pointer;           
+    font-size: 16px;          
+    transition: transform 0.3s, background-color 0.3s; 
+}
+.botonEnviar:hover{
+    background-color: #45a049; 
+    transform: scale(1.1); 
 }
