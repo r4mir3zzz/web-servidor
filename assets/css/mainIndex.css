@@ -53,6 +53,8 @@
 }
 
 .box {
+    font-family: 'Times New Roman', Times, serif;
+    display: flex;
     background-color: #074e728f;
     color: white;
     padding: 2rem;
@@ -67,6 +69,8 @@
     font-family: 'arial';
 }
 .box h2{
+    font-family: 'Times New Roman', Times, serif;
+    display: flex;
     font-size: 30px;
     border: 1px solid  #ffffff2f;
     background-color: rgba(255, 255, 255, 0.116);
@@ -75,6 +79,8 @@
     padding: 2%;
 }
 .box:hover{
+    font-family: 'Times New Roman', Times, serif;
+    display: flex;
     background-color:  #0d8ecfa9;
     transition: transform 0.8s ease; 
     transform: scale(1.1); 
