@@ -10,9 +10,9 @@ include 'header.php';
 
     <section class="cards">
         <div class="containers">
-            <div class="box"><h2>Nosotros</h2><br><p> Nos dedicamos a mejorar la calidad de vida de nuestros usuarios brindando acceso a medicamentos de alta calidad y asesoría en el manejo adecuado de sus tratamientos.</p></div>
-            <div class="box"><h2>Tratamientos</h2><br><p>Ofrecemos una amplia variedad de medicamentos para el tratamiento de enfermedades crónicas, agudas y preventivas, abarcando desde los más comunes hasta aquellos de especialidad.</p></div>
-            <div class="box"><h2>Ubicanos</h2><br><p>Visítanos en nuestras instalaciones para recibir atención personalizada y obtener los productos que necesitas. Estamos ubicados en una zona accesible, con opciones de transporte cercanas y estacionamiento disponible para mayor comodidad.</p></div>
+            <div class="box"><h2>¿Quienes somos?</h2><br><p>Somos una plataforma diseñada para ayudar a las personas a organizar su tratamiento médico de manera sencilla y eficiente. Facilitamos el seguimiento de medicamentos y citas médicas importantes mediante recordatorios automáticos, asegurándonos de que nunca olvides los detalles clave de tu salud.</p></div>
+            <div class="box"><h2>Nuestra misión</h2><br><p>Nuestra misión es apoyar a las personas en su rutina de cuidados médicos, ofreciendo una herramienta confiable y accesible para gestionar medicamentos y citas, promoviendo el bienestar y la tranquilidad de nuestros usuarios y sus familias.</p></div>
+            <div class="box"><h2>¿Por qué elegirnos?</h2><br><p>Nuestra plataforma está diseñada para que cualquier persona pueda usarla fácilmente, sin importar su edad o experiencia con la tecnología. Con nosotros, nunca más tendrás que preocuparte por olvidar un medicamento o una cita médica.</p></div>
         </div>
     </section>
 </main>
