@@ -143,54 +143,81 @@
 
 /* Sign Up*/
 
-.main-signup{
-    padding: 10%;
+.main-signup {
     display: flex;
     justify-content: center;
+    align-items: center;
+    background-image: url(../../assets/img/background.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
 }
 
-.div-signup{
-    width: 70%;
-}
-
-.div-signup .welcomeMessage{
+.div-signup {
+    background-color: #ffffff;
+    padding: 40px 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     text-align: center;
+    width: 300px;
 }
 
-.labelSign{
-    font-size: 14px;
-
-    display: block;
-
-    margin-top: 15px;
-
-    color: #666;
-
+.welcomeMessage {
+    color: #555;
+    margin-bottom: 20px;
     font-family: var(--font);
 }
 
+.labelSign {
+    font-size: 14px;
+    display: block;
+    margin-top: 15px;
+    color: #666;
+    font-family: var(--font);
+}
 
+.inputLogin {
+    width: 100%;
+    padding: 10px;
+    margin-top: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    outline: none;
+    font-family: var(--font);
+}
 
 .btncrear {
     width: 100%;
-
     padding: 10px;
-
     background-color: #6e8efb;
-
     border: none;
-
     border-radius: 4px;
-
     color: white;
-
     font-size: 16px;
-
     font-family: var(--font);
-
     margin-top: 20px;
-
     cursor: pointer;
-
     transition: background 0.3s ease;
+}
+
+.btncrear:hover {
+    background-color: #5a78d7;
+}
+
+.signup-link {
+    margin-top: 15px;
+    font-size: 14px;
+    color: #888;
+    font-family: var(--font);
+}
+
+.signup-link a {
+    color: #6e8efb;
+    text-decoration: none;
+    font-family: var(--font);
+}
+
+.signup-link a:hover {
+    text-decoration: underline;
 }
