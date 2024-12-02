@@ -1,9 +1,12 @@
+:root{
+    --font: "Merriweather", serif;
+}
+
 .main-elements {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    font-family: 'Times New Roman', Times, serif;
     background-image: url(../../assets/img/background.jpg);
     background-size: cover;
     background-position: center;
@@ -36,13 +39,11 @@
 }
 
 .cards {
-    font-family: 'Times New Roman', Times, serif;
     width: 100%;
     padding: 2rem;
 }
 
 .containers {
-    font-family: 'Times New Roman', Times, serif;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -53,7 +54,6 @@
 }
 
 .box {
-    font-family: 'Times New Roman', Times, serif;
     display: flex;
     background-color: #074e728f;
     color: white;
@@ -69,7 +69,6 @@
     font-family: 'arial';
 }
 .box h2{
-    font-family: 'Times New Roman', Times, serif;
     display: flex;
     font-size: 30px;
     border: 1px solid  #ffffff2f;
@@ -79,7 +78,6 @@
     padding: 2%;
 }
 .box:hover{
-    font-family: 'Times New Roman', Times, serif;
     display: flex;
     background-color:  #0d8ecfa9;
     transition: transform 0.8s ease; 
