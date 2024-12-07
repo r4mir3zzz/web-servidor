@@ -90,7 +90,7 @@ header {
     opacity: 1; /* Fin de la animación con opacidad 1 */
 }
 
-/* Estilo de enlaces en el menú desplegable */
+/* estilo de enlaces en el menú desplegable */
 .dropdown-content a {
     color: black;
     padding: 10px 15px;
