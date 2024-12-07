@@ -1,34 +1,11 @@
 <?php
+include '../config/conexion.php';
 include 'header.php';
 ?>
 
 <main class="main__showApp">
     <div>
-        <!-- Notificaciones de medicamentos -->
-        <?php
-        include '../config/conexion.php';
-
-        // Consulta para obtener medicamentos próximos
-        $sql_medicamentos = $conn->query("
-            SELECT * FROM Medicamentos 
-            WHERE horario >= CURTIME() 
-            AND fecha = CURDATE() 
-            ORDER BY horario ASC 
-            LIMIT 3
-        ");
-
-        if ($sql_medicamentos->num_rows > 0) { ?>
-            <div class="alert alert-warning">
-                <h4>Próximos Medicamentos:</h4>
-                <ul>
-                    <?php while ($med = $sql_medicamentos->fetch_object()) { ?>
-                        <li><strong><?= $med->horario ?></strong>: Tomar <?= $med->dosis ?> de <?= $med->nombre ?>.</li>
-                    <?php } ?>
-                </ul>
-            </div>
-        <?php } ?>
-
-        <!-- tabla de medicamentos -->
+        <!-- Tabla de medicamentos -->
         <table class="table">
             <thead class="bg-info">
                 <tr>
@@ -36,20 +13,30 @@ include 'header.php';
                     <th class="col">Descripción</th>
                     <th class="col">Dosis</th>
                     <th class="col">Frecuencia</th>
+                    <th class="col">Acción</th>
                 </tr>
             </thead>
             <tbody>
                 <?php
-                //mostrar todos los medicamentos
                 $sql = $conn->query('SELECT * FROM Medicamentos');
-                while ($datos = $sql->fetch_object()) { ?>
-                    <tr>
-                        <td><?= $datos->nombre ?></td>
-                        <td><?= $datos->descripcion ?></td>
-                        <td><?= $datos->dosis ?></td>
-                        <td><?= $datos->frecuencia ?></td>
-                    </tr>
-                <?php } ?>
+                
+                if ($sql && $sql->num_rows > 0) {
+                    while ($med = $sql->fetch_object()) { ?>
+                        <tr>
+                            <td><?= htmlspecialchars($med->nombre) ?></td>
+                            <td><?= htmlspecialchars($med->descripcion) ?></td>
+                            <td><?= htmlspecialchars($med->dosis) ?></td>
+                            <td><?= htmlspecialchars($med->frecuencia) ?></td>
+                            <td>
+                                <a href="#" class="btn btn-small btn-primary">Editar</a>
+                                <a href="#" class="btn btn-small btn-danger">Eliminar</a>
+                            </td>
+                        </tr>
+                    <?php }
+                } else {
+                    echo "<tr><td colspan='5'>No se encontraron medicamentos en la base de datos.</td></tr>";
+                }
+                ?>
             </tbody>
         </table>
     </div>
