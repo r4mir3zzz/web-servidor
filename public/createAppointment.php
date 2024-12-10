@@ -8,7 +8,7 @@ include 'header.php';
         <form>
 
             <div class="fechaNacimiento">
-                <h2>Fecha</h2>
+                <h2 class="h2-appoin">Fecha</h2>
                 <input class="input-date" type="date" name="fecha" id="patientDate">
             </div>
 
