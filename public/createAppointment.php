@@ -3,7 +3,7 @@ include 'header.php';
 ?>
 
 <main class="main__appointment">
-    <div class="container">
+    <div class="containerAp">
         <h1 class="tileForm">Formulario de Citas Médicas  <p>Rellene el formulario de inscripción</p></h1>
         <form>
 

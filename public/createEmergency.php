@@ -5,7 +5,7 @@ include 'header.php';
 
 
 <main class="main__emergency">
-    <div class="container">
+    <div class="containerEm">
         <h1 class="tileForm">Formulario de Emergencias  <p>Rellene el formulario cuidadosamente</p></h1>
         <form>
             <div class="nombrePaciente">

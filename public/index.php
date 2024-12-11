@@ -12,12 +12,14 @@ include 'header.php';
     <div class="containers">
         <div class="box">
             <h2>¿Quienes somos?</h2>
-            <p>Somos una plataforma diseñada para ayudar a las personas a organizar su tratamiento médico de manera sencilla y eficiente.</p>
+            <p>Somos una plataforma diseñada para ayudar a las personas a organizar su tratamiento médico de manera sencilla y eficiente. </p>
         </div>
                 
         <div class="box">
             <h2>Nuestra misión</h2>
-            <p>Nuestra misión es asegurar la tranquilidad de nuestros usuarios y familias ofreciendo una herramienta confiable y accesible para gestionar medicamentos y citas.</p>
+            <p>Facilitar el manejo de medicamentos y citas médicas a través de una herramienta intuitiva y confiable, ayudando a las personas a cuidar de su salud y mejorar su calidad de vida. 
+
+</p>
         </div>
                 
         <div class="box">

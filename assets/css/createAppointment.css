@@ -17,17 +17,28 @@
     box-sizing: border-box;
 }
 
-.container {
+.containerAp {
     background-color: #ffffff;
-    padding: 40px 30px; 
+    padding: 40px 30px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     text-align: center;
-    width: 100%;
-    max-width: 300px; 
+    width: 500px; 
     height: auto; 
     box-sizing: border-box;
 }
+
+.containerEm {
+    background-color: #ffffff;
+    padding: 40px 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    width: 500px; 
+    height: auto; 
+    box-sizing: border-box;
+}
+
 
 .tileForm {
     color: #555;
@@ -56,10 +67,10 @@ label {
 }
 
 .input-nombre, .input-gender, .input-email, .input-date, .input-direccion, .input-comentsAdic {
-    width: 80%; 
+    width: 100%; 
     padding: 10px;
     margin-top: 8px;
-    margin-left: 10%; 
+    margin-left: 0%; 
     border: 1px solid #ccc;
     border-radius: 4px;
     outline: none;
@@ -80,7 +91,7 @@ label {
 }
 
 .botonEnviar {
-    width: 80%;
+    width: 100%;
     padding: 10px;
     background-color: #6e8efb;
     border: none;
@@ -89,7 +100,6 @@ label {
     font-size: 16px;
     font-family: var(--font);
     margin-top: 20px;
-    margin-left: 10%; 
     cursor: pointer;
     transition: background 0.3s ease;
 }
