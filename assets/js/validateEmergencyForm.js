@@ -9,9 +9,9 @@ function validateEmergencyForm(event, nombreID, apellidoID, telefonoID, relacion
     if (!nombre || !apellido || !telefono || !relacion) {
         errorMessages.style.display = 'block';
         errorMessages.innerHTML = 'Todos los campos son obligatorios.';
-        return false; // Evitar que el formulario se envíe
+        return false;
     }
 
     errorMessages.style.display = 'none';
-    return true; // Permitir que el formulario se envíe
+    return true;
 }

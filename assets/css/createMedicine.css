@@ -28,18 +28,13 @@
     box-sizing: border-box;
 }
 
-.tileForm {
-    color: #555;
-    margin-bottom: 20px;
-    font-family: var(--font);
+
+.createMedicineForm{
+    display: flex;
+    flex-direction: column;
 }
 
-.tileForm p {
-    font-size: 15px;
-    font-weight: lighter;
-}
-
-form h2 {
+.createMedicineForm label { 
     font-family: var(--font);
     font-weight: lighter;
     font-size: 15px;
@@ -47,48 +42,52 @@ form h2 {
     text-align: center;
 }
 
-.create_nombreMedicamento, .create_descripcionMedicamento, .create_dosisMedicamento, .create_cantidadMedicamento {
-    width: 100%; 
-    padding: 10px;
-    margin-top: 8px;
-    margin-left: 0%; 
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    outline: none;
+.createMedicineForm input[type='text'],
+.createMedicineForm textarea{
+    width: 100%;
+    height: 60px;
+    max-width: 430px;
+    padding: 5px;
+    margin: 10px 0;
+    border: 1px solid var(--color);
+    border-radius: 5px;
     font-family: var(--font);
 }
 
-.botonEnviar {
-    width: 100%; 
-    padding: 10px;
-    background-color: #6e8efb;
-    border: none;
-    border-radius: 4px;
-    color: white;
-    font-size: 16px;
+
+.tileForm p {
+    font-size: 15px;
+    font-weight: lighter;
+    margin-top: 10px;
+    color: var(--color);
+}
+
+/*
+
+FORMATO PARA EL FORMULARIO DE CONTACTO DE EMERGENCIA
+
+*/
+
+.form-emergency{
+    display: flex;
+    flex-direction: column;
+}
+
+.form-emergency label { 
     font-family: var(--font);
-    margin-top: 20px;
-    cursor: pointer;
-    transition: background 0.3s ease;
+    font-weight: lighter;
+    font-size: 15px;
+    margin-left: 0;
+    text-align: center;
 }
 
-.botonEnviar:hover {
-    background-color: #5a78d7;
-}
-
-.signup-link {
-    margin-top: 15px;
-    font-size: 14px;
-    color: #888;
+.form-emergency input[type='text']{
+    width: 100%;
+    height: 60px;
+    max-width: 430px;
+    padding: 5px;
+    margin: 10px 0;
+    border: 1px solid var(--color);
+    border-radius: 5px;
     font-family: var(--font);
-}
-
-.signup-link a {
-    color: #6e8efb;
-    text-decoration: none;
-    font-family: var(--font);
-}
-
-.signup-link a:hover {
-    text-decoration: underline;
 }

@@ -26,32 +26,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['valid']) && $_POST['v
     <div class="containerMed">
         <h1 class="tileForm">Formulario de Medicamentos <p>Rellene el formulario de inscripción</p></h1>
         <div id="errorMessages" style="display:none; color:red;"></div>
-        <form id="createMedicineForm" method="POST" onsubmit="return validateMedicineForm(event, 'medicineName', 'medicineDescription', 'medicineDosis', 'medicineQuantity')">
-            <div class="create_nombreMedicamento" style="border: 0px;">
-                <h2 class="h2-medicine">Nombre del Medicamento</h2>
+        
+        <form id="createMedicineForm" method="POST" onsubmit="return validateMedicineForm(event, 'medicineName', 'medicineDescription', 'medicineDosis', 'medicineQuantity')" class="createMedicineForm">
+                <label>Nombre del Medicamento</label>
                 <input class="create_nombreMedicamento" type="text" name="name" id="medicineName" required>
-            </div>
+
             
-            <div class="create_descripcionMedicamento" style="border: 0px;">
-                <h2>Descripción</h2>
+                <label>Descripción</label>
                 <textarea class="create_descripcionMedicamento" name="description" id="medicineDescription" required></textarea>
-            </div>
 
-            <div class="create_dosisMedicamento" style="border: 0px;">
-                <h2>Dosis</h2>
+                <label>Dosis</label>
                 <input class="create_dosisMedicamento" type="text" name="price" id="medicineDosis" step="0.01" min="0" required>
-            </div>
 
-            <div class="create_cantidadMedicamento" style="border: 0px;">
-                <h2>Frecuencia</h2>
+
+                <label>Frecuencia</label>
                 <input class="create_cantidadMedicamento" type="text" name="quantity" id="medicineQuantity" min="0" required>
-            </div>
 
             <input type="hidden" name="valid" value="true">
             <input class="botonEnviar" type="submit" value="Crear" id="btnsubmit">
         </form>
     </div>
-    <br><br>
 </main>
 <script src="../assets/js/validateMedicine.js"></script>
 

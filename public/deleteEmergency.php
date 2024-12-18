@@ -1,11 +1,9 @@
 <?php
 include '../config/conexion.php'; 
 
-// Verificar si el contacto_id está presente en la URL
 if (isset($_GET['contacto_id'])) {
     $contacto_id = $_GET['contacto_id'];
 
-    // Eliminar el contacto de emergencia
     $sql = $conn->prepare('DELETE FROM ContactosEmergencia WHERE contacto_id = ?');
     $sql->bind_param('i', $contacto_id);
 

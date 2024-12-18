@@ -8,10 +8,7 @@ document.addEventListener("DOMContentLoaded", function() {
         let motivo = document.getElementById(motivoId).value.trim();
         let medico = document.getElementById(medicoId).value.trim();
         let errorMessage = "";
-
-    
-
-
+        
         if (fecha === "") {
             errorMessage += "El campo Fecha es obligatorio.\n";
         } else {

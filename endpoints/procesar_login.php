@@ -15,8 +15,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $result = $stmt->get_result();
 
         if ($datos = $result->fetch_object()) {
-            if ($password === $datos->contrasena) {
-                // Guardar datos en sesión
+            
+            if (hash_equals($datos->contrasena, hash('sha256', $password))) {
                 $_SESSION['id'] = $datos->usuario_id;
                 $_SESSION['nombre'] = $datos->nombre;
 

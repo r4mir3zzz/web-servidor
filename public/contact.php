@@ -40,6 +40,3 @@ include_once('header.php');
     </section>
     <script src="../assets/js/validateContact.js"></script>
 </main>
-<?php
-include_once('footer.php');
-?>

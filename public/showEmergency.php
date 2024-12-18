@@ -6,7 +6,7 @@ checkSession();
 
 <main class="main__showApp">
     <div>
-        <h2>Contactos de Emergencia agregados</h2>
+        <h1 class="mensajeMostrado">Estos son tus contactos guardados <?php  echo $_SESSION['nombre']; ?></h1>
         <table class="table">
             <thead class="bg-info">
                 <tr>
@@ -21,18 +21,15 @@ checkSession();
                 <?php
                     include '../config/conexion.php';
 
-                    // Obtener el usuario logueado
                     $usuario_id = $_SESSION['id'];
 
-                    // Realizar la consulta para obtener solo los contactos de emergencia del usuario logueado
                     $sql = $conn->prepare('
                         SELECT * FROM ContactosEmergencia WHERE usuario_id = ?
                     ');
-                    $sql->bind_param('i', $usuario_id); // Filtrar por el usuario logueado
+                    $sql->bind_param('i', $usuario_id); 
                     $sql->execute();
-                    $result = $sql->get_result(); // Obtener los resultados
+                    $result = $sql->get_result(); 
 
-                    // Verificar si hay contactos de emergencia
                     if ($result->num_rows > 0) {
                         while ($datos = $result->fetch_object()) { ?>
                             <tr>
@@ -43,12 +40,12 @@ checkSession();
                                 <td>
                                     <!-- Botón para editar -->
                                     <button class="btn btn-small btn-primary" onclick="openEditEmergencyPopup('<?= $datos->nombre ?>', '<?= $datos->apellido ?>', '<?= $datos->telefono ?>', '<?= $datos->relacion ?>', '<?= $datos->contacto_id ?>')">
-                                        <i class="fa-solid fa-pen"></i> Editar
+                                        <i class="fa-solid fa-pen"></i> 
                                     </button>
 
                                     <!-- Botón para eliminar -->
                                     <button type="button" class="btn btn-small btn-danger" onclick="deleteContact('<?= $datos->contacto_id ?>')">
-                                        <i class="fa-solid fa-trash"></i> Eliminar
+                                        <i class="fa-solid fa-trash"></i>
                                     </button>
                                 </td>
                             </tr>
@@ -100,21 +97,18 @@ function openEditEmergencyPopup(nombre, apellido, telefono, relacion, contacto_i
     document.getElementById('editEmergencyPopup').style.display = 'block';
 }
 
-// Función para cerrar el popup
 function closeEditEmergencyPopup() {
     document.getElementById('editEmergencyPopup').style.display = 'none';
 }
 
-// Función para eliminar un contacto de emergencia
 function deleteContact(contacto_id) {
     if (confirm('¿Estás seguro de que deseas eliminar este contacto de emergencia?')) {
-        // Redirigir a un archivo PHP que se encargue de eliminar el contacto
         window.location.href = '../public/deleteEmergency.php?contacto_id=' + contacto_id;
     }
 }
 </script>
 
-<script src="/assets/js/validateEmergencyForm.js"></script> <!-- Aquí va tu archivo JS para validar el formulario -->
+<script src="/assets/js/validateEmergencyForm.js"></script> 
 
 <?php
 include 'footer.php';

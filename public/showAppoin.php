@@ -29,6 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <main class="main__showApp">
     <div>
+        <h1 class="mensajeMostrado">Estas son todas tus citas <?php  echo $_SESSION['nombre']; ?></h1>
         <table class="table">
             <thead class="bg-info">
                 <tr>

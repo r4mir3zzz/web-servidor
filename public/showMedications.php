@@ -5,7 +5,6 @@ include 'header.php';
 include '../config/sessionHandler.php';
 checkSession(); 
 
-// Obtener el id del usuario logueado desde la sesión
 $usuario_id = $_SESSION['id'];
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -16,14 +15,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $frecuencia = $_POST['frecuencia'];
         $medicamento_id = $_POST['medicamento_id'];
 
-        // Actualizar medicamento filtrado por usuario
         $sql = $conn->prepare('UPDATE Medicamentos SET nombre = ?, descripcion = ?, dosis = ?, frecuencia = ? WHERE medicamento_id = ? AND usuario_id = ?');
         $sql->bind_param('sssiii', $nombre, $descripcion, $dosis, $frecuencia, $medicamento_id, $usuario_id);
         $sql->execute();
     } elseif (isset($_POST['delete']) && $_POST['delete'] === 'true') {
         $medicamento_id = $_POST['medicamento_id'];
 
-        // Eliminar medicamento filtrado por usuario
         $sql = $conn->prepare('DELETE FROM Medicamentos WHERE medicamento_id = ? AND usuario_id = ?');
         $sql->bind_param('ii', $medicamento_id, $usuario_id);
         $sql->execute();
@@ -33,6 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <main class="main__showApp">
     <div>
+        <h1 class="mensajeMostrado">Estos son tus medicamentos <?php  echo $_SESSION['nombre']; ?></h1>
         <!-- Tabla de medicamentos -->
         <table class="table">
             <thead class="bg-info">
@@ -84,19 +82,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <!-- Pop-up para editar el medicamento -->
 <div id="editPopup" class="popup">
-    <form id="editForm" class="popup-content" method="POST" onsubmit="return validateMedicineForm(event, 'editNombre', 'editDescripcion', 'editDosis', 'editFrecuencia')">
+<form id="editForm" class="popup-content" method="POST" onsubmit="return validateMedicineForm(event, 'editNombre', 'editDescripcion', 'editDosis', 'editFrecuencia')">
         <h2>Editar Medicamento</h2>
         <div id="errorMessages" style="display:none; color:red;"></div>
+        
         <label for="editNombre">Nombre:</label>
         <input type="text" id="editNombre" name="nombre"><br>
+        
         <label for="editDescripcion">Descripción:</label>
         <input type="text" id="editDescripcion" name="descripcion"><br>
+        
         <label for="editDosis">Dosis:</label>
-        <input type="number" id="editDosis" name="dosis" step="0.01" min="0"><br>
+        <input type="text" id="editDosis" name="dosis" step="0.01" min="0"><br>
+        
         <label for="editFrecuencia">Frecuencia:</label>
-        <input type="number" id="editFrecuencia" name="frecuencia" min="0"><br>
+        <input type="text" id="editFrecuencia" name="frecuencia" min="0"><br>
+        
         <input type="hidden" id="editMedID" name="medicamento_id">
         <input type="hidden" name="valid" value="true">
+        
         <div class="popup-buttons">
             <button type="button" onclick="closeEditPopup()">Cancelar</button>
             <button type="submit">Guardar</button>
