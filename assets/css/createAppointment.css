@@ -66,7 +66,7 @@ label {
     text-align: left;
 }
 
-.input-nombre, .input-gender, .input-email, .input-date, .input-direccion, .input-comentsAdic, .fechaCita, .horaCita, .motivoCita, .medicoCita {
+ .create_fechaCita, .create_horaCita, .create_motivoCita, .create_medicoCita {
     width: 100%; 
     padding: 10px;
     margin-top: 8px;
@@ -77,18 +77,6 @@ label {
     font-family: var(--font);
 }
 
-.input-comentsAdic {
-    padding: 20px; 
-}
-
-.direccion p, .email p {
-    margin-left: 25%;
-    font-family: var(--font);
-    font-weight: lighter;
-    font-size: 12px;
-    margin-top: 1%;
-    color: rgba(63, 62, 62, 0.945);
-}
 
 .botonEnviar {
     width: 100%;
