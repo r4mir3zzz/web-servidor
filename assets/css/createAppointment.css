@@ -66,7 +66,7 @@ label {
     text-align: left;
 }
 
-.input-nombre, .input-gender, .input-email, .input-date, .input-direccion, .input-comentsAdic {
+.input-nombre, .input-gender, .input-email, .input-date, .input-direccion, .input-comentsAdic, .fechaCita, .horaCita, .motivoCita, .medicoCita {
     width: 100%; 
     padding: 10px;
     margin-top: 8px;

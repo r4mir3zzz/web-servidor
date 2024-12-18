@@ -2,6 +2,19 @@
 
 include '../config/conexion.php';
 include 'header.php';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['valid']) && $_POST['valid'] === 'true') {
+    $fecha = $_POST['fecha'];
+    $hora = $_POST['hora'];
+    $motivo = $_POST['motivo'];
+    $medico = $_POST['medico'];
+    $cita_id = $_POST['cita_id'];
+
+    $sql = $conn->prepare('UPDATE CitasMedicas SET fecha = ?, hora = ?, motivo = ?, medico = ? WHERE cita_id = ?');
+    $sql->bind_param('ssssi', $fecha, $hora, $motivo, $medico, $cita_id);
+    $sql->execute();
+}
+
 ?>
 
 <main class="main__showApp">
@@ -20,7 +33,7 @@ include 'header.php';
                 <?php 
                 // Realiza la consulta
                 $sql = $conn->query('
-                    SELECT CitasMedicas.fecha, CitasMedicas.hora, CitasMedicas.motivo, CitasMedicas.medico, Usuarios.nombre as usuario_nombre
+                    SELECT CitasMedicas.fecha, CitasMedicas.hora, CitasMedicas.motivo, CitasMedicas.medico, CitasMedicas.cita_id, Usuarios.nombre as usuario_nombre
                     FROM CitasMedicas
                     LEFT JOIN Usuarios ON CitasMedicas.usuario_id = Usuarios.usuario_id
                 ');
@@ -35,12 +48,9 @@ include 'header.php';
                             <td><?= htmlspecialchars($datos->medico) ?></td>
                             <td><?= htmlspecialchars($datos->usuario_nombre) ?></td>
                             <td>
-                                <a href="#" class="btn btn-small btn-primary">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-square" viewBox="0 0 16 16">
-                                        <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z"/>
-                                        <path d="M10.97 4.97a.75.75 0 0 1 1.071 1.05l-3.992 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425z"/>
-                                    </svg>
-                                </a>
+                                <button class="btn btn-small btn-primary" onclick="openEditPopup('<?= $datos->fecha ?>', '<?= $datos->hora ?>', '<?= $datos->motivo ?>', '<?= $datos->medico ?>', '<?= $datos->cita_id ?>')">
+                                    <i class="fa-solid fa-pen"></i>
+                                </button>
                                 <a href="#" class="btn btn-small btn-danger">
                                     <i class="fa-solid fa-trash"></i>
                                 </a>
@@ -55,6 +65,45 @@ include 'header.php';
         </table>
     </div>
 </main>
+
+<!-- Pop-up para editar la cita médica -->
+<div id="editPopup" class="popup">
+    <form id="editForm" class="popup-content" method="POST" onsubmit="return validateForm(event, 'editFecha', 'editHora', 'editMotivo', 'editMedico')">
+        <h2>Editar Cita Médica</h2>
+        <div id="errorMessages" style="display:none; color:red;"></div>
+        <label for="editFecha">Fecha:</label>
+        <input type="date" id="editFecha" name="fecha"><br>
+        <label for="editHora">Hora:</label>
+        <input type="time" id="editHora" name="hora"><br>
+        <label for="editMotivo">Motivo:</label>
+        <input type="text" id="editMotivo" name="motivo"><br>
+        <label for="editMedico">Médico:</label>
+        <input type="text" id="editMedico" name="medico"><br>
+        <input type="hidden" id="editCitaID" name="cita_id">
+        <input type="hidden" name="valid" value="true">
+        <div class="popup-buttons">
+            <button type="button" onclick="closeEditPopup()">Cancelar</button>
+            <button type="submit">Guardar</button>
+        </div>
+    </form>
+</div>
+
+<script>
+function openEditPopup(fecha, hora, motivo, medico, cita_id) {
+    document.getElementById('editFecha').value = fecha;
+    document.getElementById('editHora').value = hora;
+    document.getElementById('editMotivo').value = motivo;
+    document.getElementById('editMedico').value = medico;
+    document.getElementById('editCitaID').value = cita_id;
+    document.getElementById('editPopup').style.display = 'block';
+}
+
+function closeEditPopup() {
+    document.getElementById('editPopup').style.display = 'none';
+}
+</script>
+
+<script src="/assets/js/validateAppointments.js"></script>
 
 <?php
 include 'footer.php';
