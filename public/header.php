@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="../assets/css/header-footer.css">
     <link rel="stylesheet" href="../assets/css/mainIndex.css">
     <link rel="stylesheet" href="../assets/css/createAppointment.css">
+    <link rel="stylesheet" href="../assets/css/createMedicine.css">
     <link rel="stylesheet" href="../assets/css/login.css">
     <link rel="stylesheet" href="../assets/css/contactMessage.css">
     <link rel="stylesheet" href="../assets/css/viewAppoint.css">
@@ -29,8 +30,8 @@
                     <div class="submenu">
                         <a href="">Citas Medicas</a>
                         <div class="sub-submenu">
-                            <a href="showAppoin.php">Mostrar cita</a>
                             <a href="createAppointment.php">Crear cita</a>
+                            <a href="showAppoin.php">Mostrar cita</a>
                         </div>
                     </div>
                     <div class="submenu">

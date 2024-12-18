@@ -3,16 +3,24 @@
 include '../config/conexion.php';
 include 'header.php';
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['valid']) && $_POST['valid'] === 'true') {
-    $fecha = $_POST['fecha'];
-    $hora = $_POST['hora'];
-    $motivo = $_POST['motivo'];
-    $medico = $_POST['medico'];
-    $cita_id = $_POST['cita_id'];
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (isset($_POST['valid']) && $_POST['valid'] === 'true') {
+        $fecha = $_POST['fecha'];
+        $hora = $_POST['hora'];
+        $motivo = $_POST['motivo'];
+        $medico = $_POST['medico'];
+        $cita_id = $_POST['cita_id'];
 
-    $sql = $conn->prepare('UPDATE CitasMedicas SET fecha = ?, hora = ?, motivo = ?, medico = ? WHERE cita_id = ?');
-    $sql->bind_param('ssssi', $fecha, $hora, $motivo, $medico, $cita_id);
-    $sql->execute();
+        $sql = $conn->prepare('UPDATE CitasMedicas SET fecha = ?, hora = ?, motivo = ?, medico = ? WHERE cita_id = ?');
+        $sql->bind_param('ssssi', $fecha, $hora, $motivo, $medico, $cita_id);
+        $sql->execute();
+    } elseif (isset($_POST['delete']) && $_POST['delete'] === 'true') {
+        $cita_id = $_POST['cita_id'];
+
+        $sql = $conn->prepare('DELETE FROM CitasMedicas WHERE cita_id = ?');
+        $sql->bind_param('i', $cita_id);
+        $sql->execute();
+    }
 }
 
 ?>
@@ -51,9 +59,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['valid']) && $_POST['v
                                 <button class="btn btn-small btn-primary" onclick="openEditPopup('<?= $datos->fecha ?>', '<?= $datos->hora ?>', '<?= $datos->motivo ?>', '<?= $datos->medico ?>', '<?= $datos->cita_id ?>')">
                                     <i class="fa-solid fa-pen"></i>
                                 </button>
-                                <a href="#" class="btn btn-small btn-danger">
-                                    <i class="fa-solid fa-trash"></i>
-                                </a>
+                                <form method="POST" style="display:inline;" onsubmit="return confirm('¿Estás seguro de que deseas eliminar esta cita?');">
+                                    <input type="hidden" name="cita_id" value="<?= $datos->cita_id ?>">
+                                    <input type="hidden" name="delete" value="true">
+                                    <button type="submit" class="btn btn-small btn-danger">
+                                        <i class="fa-solid fa-trash"></i>
+                                    </button>
+                                </form>
                             </td>
                         </tr>
                     <?php } 

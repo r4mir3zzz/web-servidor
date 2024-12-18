@@ -4,7 +4,7 @@
     --font: "Merriweather", serif;
 }
 
-.main-medicine {
+.main__medicine {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -17,14 +17,13 @@
     box-sizing: border-box;
 }
 
-.container {
+.containerMed {
     background-color: #ffffff;
     padding: 40px 30px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     text-align: center;
-    width: 100%;
-    max-width: 500px; 
+    width: 500px; 
     height: auto; 
     box-sizing: border-box;
 }
@@ -48,11 +47,11 @@ form h2 {
     text-align: center;
 }
 
-.input-nombre, .input-descripcion, .input-precio, .input-cantidad {
-    width: 80%; 
+.create_nombreMedicamento, .create_descripcionMedicamento, .create_dosisMedicamento, .create_cantidadMedicamento {
+    width: 100%; 
     padding: 10px;
     margin-top: 8px;
-    margin-left: 10%; 
+    margin-left: 0%; 
     border: 1px solid #ccc;
     border-radius: 4px;
     outline: none;
@@ -60,7 +59,7 @@ form h2 {
 }
 
 .botonEnviar {
-    width: 80%; 
+    width: 100%; 
     padding: 10px;
     background-color: #6e8efb;
     border: none;
@@ -69,7 +68,6 @@ form h2 {
     font-size: 16px;
     font-family: var(--font);
     margin-top: 20px;
-    margin-left: 10%; 
     cursor: pointer;
     transition: background 0.3s ease;
 }
