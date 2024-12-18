@@ -9,6 +9,9 @@ document.addEventListener("DOMContentLoaded", function() {
         let medico = document.getElementById(medicoId).value.trim();
         let errorMessage = "";
 
+    
+
+
         if (fecha === "") {
             errorMessage += "El campo Fecha es obligatorio.\n";
         } else {
@@ -17,14 +20,9 @@ document.addEventListener("DOMContentLoaded", function() {
                 errorMessage += "La fecha de la cita no puede ser en el pasado.\n";
             }
         }
-        if (hora === "") {
-            errorMessage += "El campo Hora es obligatorio.\n";
-        }
-        if (motivo === "") {
-            errorMessage += "El campo Motivo es obligatorio.\n";
-        }
-        if (medico === "") {
-            errorMessage += "El campo Médico es obligatorio.\n";
+        
+        if (hora === "" || motivo ===  "" || medico === ""){
+            errorMessage += "Todos los campos son obligatorios"
         }
 
         if (errorMessage !== "") {

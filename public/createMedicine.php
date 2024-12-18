@@ -2,10 +2,10 @@
 include '../config/conexion.php';
 include 'header.php';
 
-// Iniciar la sesión
-session_start();
+include '../config/sessionHandler.php';
+checkSession(); 
 
-// Obtener el usuario logueado actualmente
+
 $usuario_id = $_SESSION['id'];
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['valid']) && $_POST['valid'] === 'true') {
@@ -39,12 +39,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['valid']) && $_POST['v
 
             <div class="create_dosisMedicamento" style="border: 0px;">
                 <h2>Dosis</h2>
-                <input class="create_dosisMedicamento" type="number" name="price" id="medicineDosis" step="0.01" min="0" required>
+                <input class="create_dosisMedicamento" type="text" name="price" id="medicineDosis" step="0.01" min="0" required>
             </div>
 
             <div class="create_cantidadMedicamento" style="border: 0px;">
                 <h2>Frecuencia</h2>
-                <input class="create_cantidadMedicamento" type="number" name="quantity" id="medicineQuantity" min="0" required>
+                <input class="create_cantidadMedicamento" type="text" name="quantity" id="medicineQuantity" min="0" required>
             </div>
 
             <input type="hidden" name="valid" value="true">

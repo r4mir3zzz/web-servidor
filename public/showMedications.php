@@ -2,6 +2,12 @@
 include '../config/conexion.php';
 include 'header.php';
 
+include '../config/sessionHandler.php';
+checkSession(); 
+
+// Obtener el id del usuario logueado desde la sesión
+$usuario_id = $_SESSION['id'];
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['valid']) && $_POST['valid'] === 'true') {
         $nombre = $_POST['nombre'];
@@ -10,14 +16,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $frecuencia = $_POST['frecuencia'];
         $medicamento_id = $_POST['medicamento_id'];
 
-        $sql = $conn->prepare('UPDATE Medicamentos SET nombre = ?, descripcion = ?, dosis = ?, frecuencia = ? WHERE medicamento_id = ?');
-        $sql->bind_param('sssii', $nombre, $descripcion, $dosis, $frecuencia, $medicamento_id);
+        // Actualizar medicamento filtrado por usuario
+        $sql = $conn->prepare('UPDATE Medicamentos SET nombre = ?, descripcion = ?, dosis = ?, frecuencia = ? WHERE medicamento_id = ? AND usuario_id = ?');
+        $sql->bind_param('sssiii', $nombre, $descripcion, $dosis, $frecuencia, $medicamento_id, $usuario_id);
         $sql->execute();
     } elseif (isset($_POST['delete']) && $_POST['delete'] === 'true') {
         $medicamento_id = $_POST['medicamento_id'];
 
-        $sql = $conn->prepare('DELETE FROM Medicamentos WHERE medicamento_id = ?');
-        $sql->bind_param('i', $medicamento_id);
+        // Eliminar medicamento filtrado por usuario
+        $sql = $conn->prepare('DELETE FROM Medicamentos WHERE medicamento_id = ? AND usuario_id = ?');
+        $sql->bind_param('ii', $medicamento_id, $usuario_id);
         $sql->execute();
     }
 }
@@ -38,10 +46,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </thead>
             <tbody>
                 <?php
-                $sql = $conn->query('SELECT * FROM Medicamentos');
-                
-                if ($sql && $sql->num_rows > 0) {
-                    while ($med = $sql->fetch_object()) { ?>
+                // Realizar la consulta para obtener los medicamentos solo del usuario logueado
+                $sql = $conn->prepare('SELECT * FROM Medicamentos WHERE usuario_id = ?');
+                $sql->bind_param('i', $usuario_id);
+                $sql->execute();
+                $result = $sql->get_result();
+
+                if ($result && $result->num_rows > 0) {
+                    while ($med = $result->fetch_object()) { ?>
                         <tr>
                             <td><?= htmlspecialchars($med->nombre) ?></td>
                             <td><?= htmlspecialchars($med->descripcion) ?></td>

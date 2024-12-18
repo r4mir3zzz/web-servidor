@@ -1,39 +1,40 @@
 <?php
 include 'header.php';
+include '../config/sessionHandler.php';
+checkSession(); 
+
+
 ?>
 
 
 
 <main class="main__emergency">
     <div class="containerEm">
-        <h1 class="tileForm">Formulario de Emergencias  <p>Rellene el formulario cuidadosamente</p></h1>
-        <form>
-            <div class="nombrePaciente">
-                <h2>Nombre</h2>
-                <input class="input-nombre" type="text" name="nombre"  id="patientName">
-            </div>
-
-            <div class="generoPaciente">
-                <h2>Apellido</h2>
-                <input class="input-gender" type="text" name="genero" id="patientGender">
-            </div>
-
-            <div class="direccion">
-                <h2>Telefono</h2>
-                <input class="input-direccion"type="text" name="direccion" id="directionpatient">
-            </div>
-            <div class="telefono">
-                <h2>Relacion</h2>
-                <input class="input-email"type="text" name="telefono" id="phonepatient">
-                
-            </div>
-
-
-            <input class="botonEnviar" type="button" value="Enviar" id="btnsubmit">
-            
+        <h1 class="tileForm">Formulario Contacto de Emergencia  <p>Rellene el formulario cuidadosamente</p></h1>
+        
+        <form action="" method="POST" id="formEmergency" class="form-emergency">
+            <label>Nombre</label>
+            <input class="input-nombre" type="text" name="name" id="nombreCE">
+            <br><br>
+            <label>Apellido</label>
+            <input class="input-gender" type="text" name="lastName" id="apellidoCE">
+            <br><br>
+            <label>Telefono</label>
+            <input class="input-direccion" type="text" name="phone" id="telefonoCE">
+            <br><br>
+            <label>Relacion</label>
+            <input class="input-email" type="text" name="relationship" id="relacionCE">
+            <br><br>
+            <input class="botonEnviar" type="submit" value="Enviar" id="btnsubmit">
         </form>
+        <div id="errorMessage"></div>
     </div>
-    <br><br>
+</main>
+
+
+
+
+    </div>
 </main>
 
 

@@ -2,6 +2,8 @@
 
 include '../config/conexion.php';
 include 'header.php';
+include '../config/sessionHandler.php';
+checkSession(); // Verifica si la sesión está activa
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['valid']) && $_POST['valid'] === 'true') {
@@ -39,39 +41,43 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </thead>
             <tbody>
                 <?php 
-                // Realiza la consulta
-                $sql = $conn->query('
-                    SELECT CitasMedicas.fecha, CitasMedicas.hora, CitasMedicas.motivo, CitasMedicas.medico, CitasMedicas.cita_id, Usuarios.nombre as usuario_nombre
-                    FROM CitasMedicas
-                    LEFT JOIN Usuarios ON CitasMedicas.usuario_id = Usuarios.usuario_id
-                ');
-                
-                //para ver si la consulta devolvio resultados
-                if ($sql && $sql->num_rows > 0) {
-                    while ($datos = $sql->fetch_object()) { ?>
-                        <tr>
-                            <td><?= htmlspecialchars($datos->fecha) ?></td>
-                            <td><?= htmlspecialchars($datos->hora) ?></td>
-                            <td><?= htmlspecialchars($datos->motivo) ?></td>
-                            <td><?= htmlspecialchars($datos->medico) ?></td>
-                            <td><?= htmlspecialchars($datos->usuario_nombre) ?></td>
-                            <td>
-                                <button class="btn btn-small btn-primary" onclick="openEditPopup('<?= $datos->fecha ?>', '<?= $datos->hora ?>', '<?= $datos->motivo ?>', '<?= $datos->medico ?>', '<?= $datos->cita_id ?>')">
-                                    <i class="fa-solid fa-pen"></i>
-                                </button>
-                                <form method="POST" style="display:inline;" onsubmit="return confirm('¿Estás seguro de que deseas eliminar esta cita?');">
-                                    <input type="hidden" name="cita_id" value="<?= $datos->cita_id ?>">
-                                    <input type="hidden" name="delete" value="true">
-                                    <button type="submit" class="btn btn-small btn-danger">
-                                        <i class="fa-solid fa-trash"></i>
+                    $usuario_id = $_SESSION['id'];
+
+                    $sql = $conn->prepare('
+                        SELECT CitasMedicas.fecha, CitasMedicas.hora, CitasMedicas.motivo, CitasMedicas.medico, CitasMedicas.cita_id, Usuarios.nombre as usuario_nombre
+                        FROM CitasMedicas
+                        LEFT JOIN Usuarios ON CitasMedicas.usuario_id = Usuarios.usuario_id
+                        WHERE CitasMedicas.usuario_id = ?
+                    ');
+                    $sql->bind_param('i', $usuario_id); 
+                    $sql->execute();
+                    $result = $sql->get_result(); 
+
+                    if ($result->num_rows > 0) {
+                        while ($datos = $result->fetch_object()) { ?>
+                            <tr>
+                                <td><?= htmlspecialchars($datos->fecha) ?></td>
+                                <td><?= htmlspecialchars($datos->hora) ?></td>
+                                <td><?= htmlspecialchars($datos->motivo) ?></td>
+                                <td><?= htmlspecialchars($datos->medico) ?></td>
+                                <td><?= htmlspecialchars($datos->usuario_nombre) ?></td>
+                                <td>
+                                    <button class="btn btn-small btn-primary" onclick="openEditPopup('<?= $datos->fecha ?>', '<?= $datos->hora ?>', '<?= $datos->motivo ?>', '<?= $datos->medico ?>', '<?= $datos->cita_id ?>')">
+                                        <i class="fa-solid fa-pen"></i>
                                     </button>
-                                </form>
-                            </td>
-                        </tr>
-                    <?php } 
-                } else { 
-                    echo "<tr><td colspan='5'>No se encontraron citas médicas en la base de datos.</td></tr>";
-                } 
+                                    <form method="POST" style="display:inline;" onsubmit="return confirm('¿Estás seguro de que deseas eliminar esta cita?');">
+                                        <input type="hidden" name="cita_id" value="<?= $datos->cita_id ?>">
+                                        <input type="hidden" name="delete" value="true">
+                                        <button type="submit" class="btn btn-small btn-danger">
+                                            <i class="fa-solid fa-trash"></i>
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
+                        <?php } 
+                    } else { 
+                        echo "<tr><td colspan='5'>No se encontraron citas médicas en la base de datos.</td></tr>";
+                    } 
                 ?>
             </tbody>
         </table>

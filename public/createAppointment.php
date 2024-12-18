@@ -2,8 +2,8 @@
 include '../config/conexion.php';
 include 'header.php';
 
-// Iniciar la sesión
-session_start();
+include '../config/sessionHandler.php';
+checkSession(); 
 
 // Obtener el usuario logueado actualmente
 $usuario_id = $_SESSION['id'];
