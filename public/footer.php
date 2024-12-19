@@ -9,9 +9,9 @@
         <div class="linkFooter">
             <nav>
                 <ul>
-                    <a href="">Iniciar sesion</a>
+                    <a href="../public/login.php">Iniciar sesion</a>
                     <a href="">Nosotros</a>
-                    <a href="">Contactanos</a>
+                    <a href="../public/contact.php">Contactanos</a>
                 </ul>
             </nav>
         </div>

@@ -26,7 +26,8 @@ if (session_status() === PHP_SESSION_NONE) {
     <script src="../assets/js/signup.js"></script>
     <script src="../assets/js/updateEmergency.js"></script>
     <script src="../assets/js/updateAppointment.js"></script>
-    <script src="../assets/js/updateMedication.js"></script>
+    <script src="../assets/js/medicine.js"></script>
+    <script src="../assets/js/validateContac.js"></script>
 </head>
 </head>
 <body>

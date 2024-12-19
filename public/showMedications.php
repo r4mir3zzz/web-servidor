@@ -95,7 +95,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <label for="editDosis">Dosis:</label>
         <input type="text" id="editDosis" name="dosis" step="0.01" min="0"><br>
         
-        <label for="editFrecuencia">Frecuencia:</label>
+        <label for="editFrecuencia">Frecuencia</label>
         <input type="text" id="editFrecuencia" name="frecuencia" min="0"><br>
         
         <input type="hidden" id="editMedID" name="medicamento_id">

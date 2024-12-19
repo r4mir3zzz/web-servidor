@@ -1,6 +1,6 @@
 $(document).ready(function () {
     $('#formEmergency').on('submit', function (event) {
-        event.preventDefault();
+        event.preventDefault(); 
 
         const name = $('#nombreCE').val().trim();
         const lastName = $('#apellidoCE').val().trim();
@@ -21,17 +21,35 @@ $(document).ready(function () {
             dataType: 'json',
             success: function (response) {
                 console.log('Respuesta del servidor:', response);
+                
                 if (response.success) {
-                    window.location.href = 'index.php';
+                    showModal('Éxito', 'Tu mensaje de emergencia fue enviado correctamente.');
                 } else {
-                    $('#errorMessage').text(response.message).css('color', 'red');
+                    showModal('Error', response.message);
                 }
             },
             error: function (xhr, status, error) {
                 console.error('Error:', error);
                 console.error('Detalles del error:', xhr.responseText);
-                $('#errorMessage').text('Ocurrió un error inesperado. Intenta nuevamente.').css('color', 'red');
+                showModal('Error', 'Ocurrió un error inesperado. Intenta nuevamente.');
             }
         });
     });
+
+    function showModal(title, message) {
+        $('#modalTitle').text(title);
+        $('#modalMessage').text(message); 
+        $('#contactModal').fadeIn();
+    }
+
+    $('.close-modal').on('click', function () {
+        $('#contactModal').fadeOut();
+    });
+
+    $(window).on('click', function (event) {
+        if ($(event.target).is('#contactModal')) {
+            $('#contactModal').fadeOut();
+        }
+    });
 });
+
